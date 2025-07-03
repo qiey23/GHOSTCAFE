@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghostt Cafe | Contact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gallery/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    header {
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      border-bottom: 1px solid #FFD700;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #FFD700;
+      font-size: 36px;
+      margin: 50px 0 20px;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #000;
+      border: 2px solid #FFD700;
+      border-radius: 16px;
+      padding: 30px 25px;
+      width: 280px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+
+    .card i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #FFD700;
+    }
+
+    .card h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      margin: 40px auto;
+      border: 3px solid #FFD700;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      height: 400px;
+      display: block;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #000;
+      border: 2px solid #FFD700;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+    }
+
+    .form-container h3 {
+      color: #FFD700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-container input, .form-container textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      background-color: #111;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+    }
+
+    .form-container button {
+      background-color: #FFD700;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #e6c200;
+      box-shadow: 0 0 12px #FFD700;
+    }
+
+    .notification {
+      display: none;
+      background: #000;
+      color: #fff;
+      border: 2px solid #FFD700;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      max-width: 500px;
+      margin: 20px auto;
+      animation: fadein 0.5s ease forwards;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      border-top: 2px solid #FFD700;
+    }
+
+    footer p {
+      color: #fff;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- Audio Latar -->
+  <audio id="bgmusic" autoplay loop muted hidden>
+    <source src="https://cdn.pixabay.com/audio/2023/03/09/audio_c09773b7fd.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <div class="logo">Ghost Cafe</div>
+    <nav>
+      <ul>
+        <li><a href="index (1).html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2 class="section-title">Contact & Location</h2>
+
+  <div class="contact-cards">
+    <div class="card">
+      <i class="fab fa-instagram"></i>
+      <h3>Instagram</h3>
+      <a href="https://www.instagram.com/ghosttmatcha" target="_blank">@ghosttmatcha</a>
+    </div>
+    <div class="card">
+      <i class="fab fa-whatsapp"></i>
+      <h3>WhatsApp</h3>
+      <a href="https://wa.me/60123456789" target="_blank">+6014-3707861</a>
+    </div>
+    <div class="card">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Location</h3>
+      <p style="color:#ccc;">Pantai Pandak, Cendering, Kuala Terengganu</p>
+    </div>
+  </div>
+
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15891.764919178731!2d103.18269550000001!3d5.2718503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7955d756249cf%3A0x7363ac6152c42b9c!2sPantai%20Pandak!5e0!3m2!1sen!2smy!4v1751487868011!5m2!1sen!2smy" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <div class="form-container">
+    <h3>Feedback</h3>
+    <form id="feedbackForm">
+      <input type="text" name="name" placeholder="Nama" required>
+      <input type="tel" name="phone" placeholder="No Telefon" required>
+      <input type="email" name="email" placeholder="Emel" required>
+      <textarea name="message" rows="5" placeholder="Maklum balas anda..." required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="notification" id="feedbackAlert">✅ Maklum balas anda telah diterima. Kami akan respon secepat mungkin.</div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Ghost Cafe. We’re hantu kopi. We’re Ghost.</p>
+  </footer>
+
+  <script>
+    window.addEventListener("click", function () {
+      const music = document.getElementById("bgmusic");
+      music.muted = false;
+      music.play();
+    }, { once: true });
+
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('feedbackAlert').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>

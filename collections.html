@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghostt Cafe | Collections</title>
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gallery/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      border-bottom: 1px solid #FFD700;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+    }
+
+    /* Section title */
+    h1 {
+      text-align: center;
+      color: #FFD700;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    /* Dropdown selector */
+    select {
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      background: #222;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+    }
+
+    /* Collection Grid */
+    .collection-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px 0;
+    }
+
+    .product-card {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      width: 250px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #FFD700;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product-card h3 {
+      color: #FFD700;
+      margin: 15px 0 5px;
+    }
+
+    .product-card p {
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .product-card button {
+      background-color: #FFD700;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #fff000;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    /* Tabs */
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: flex !important;
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #FFD700;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .collection-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Ghost Cafe</div>
+    <nav>
+      <ul>
+        <li><a href="index (1).html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collections.html" class="active">Collections</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section style="padding: 50px 20px;">
+    <h1>Our Collections</h1>
+
+    <div style="text-align:center; margin-bottom: 30px;">
+      <select id="tab-selector" onchange="showTab(this.value)">
+        <option value="basic">Basic drinks</option>
+        <option value="limited">Signature drinks</option>
+      </select>
+    </div>
+
+    <div id="basic" class="collection-grid tab-content active">
+      <div class="product-card"><img src="gallery/latte.jpeg" alt=""><h3>Latte</h3><p>RM10.00</p><button onclick="addToCart('Latte', 10.00)">Order</button></div>
+      <div class="product-card"><img src="gallery/buttercreamlatte.jpeg" alt=""><h3>Butter Cream Latte</h3><p>RM13.00</p><button onclick="addToCart('Butter Cream Latte', 13.00)">Order</button></div>
+      <div class="product-card"><img src="gallery/caramelmachiato.jpeg" alt=""><h3>Caramel Macchiato</h3><p>RM12.00</p><button onclick="addToCart('Caramel Macchiato', 12.00)">Order</button></div>
+      <div class="product-card"><img src="gallery/matchabuttercream.jpeg" alt=""><h3>Matcha Butter Cream</h3><p>RM10.00</p><button onclick="addToCart('Matcha Butter Cream', 10.00)">Order</button></div>
+      <div class="product-card"><img src="gallery/matchabutterscotch.jpeg" alt=""><h3>Matcha Butter Scotch</h3><p>RM12.00</p><button onclick="addToCart('Matcha Butter Scotch', 12.00)">Order</button></div>
+    </div>
+
+    <div id="limited" class="collection-grid tab-content">
+      <div class="product-card"><img src="gallery/buttersoda.jpeg" alt=""><h3>Butter Soda</h3><p>RM8.00</p><button onclick="addToCart('Butter Soda', 8.00)">Order</button></div>
+      <div class="product-card"><img src="gallery/buttercreamsoda.jpeg" alt=""><h3>Butter Cream Soda</h3><p>RM10.00</p><button onclick="addToCart('Butter Cream Soda', 10.00)">Order</button></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ghost Cafe. We’re hantu kopi. We’re Ghost.</p>
+  </footer>
+
+  <script>
+    function addToCart(name, price) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(name + " added to cart!");
+    }
+
+    function showTab(id) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      showTab('basic');
+    });
+  </script>
+</body>
+</html>

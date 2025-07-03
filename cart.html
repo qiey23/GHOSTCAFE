@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghostt Cafe | Cart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gallery/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    header {
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      border-bottom: 1px solid #FFD700;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .cart-container h1 {
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      background: #111;
+      padding: 15px;
+      border: 1px solid #FFD700;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .cart-item h3 {
+      color: #FFD700;
+      margin-bottom: 5px;
+    }
+
+    .cart-item p {
+      color: #ccc;
+      margin: 4px 0;
+    }
+
+    .cart-item button {
+      margin-right: 10px;
+      padding: 6px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: #FFD700;
+      border: none;
+      border-radius: 4px;
+      color: black;
+    }
+
+    .cart-item button:hover {
+      background-color: #fff000;
+    }
+
+    .cart-total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 20px;
+      color: #FFD700;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 30px;
+      background-color: #FFD700;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background-color: #e6c200;
+    }
+
+    .payment-method {
+      margin-top: 30px;
+      display: none;
+      background: #111;
+      padding: 20px;
+      border: 1px solid #FFD700;
+      border-radius: 6px;
+    }
+
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 15px;
+      background: #000;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+      border-radius: 4px;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    img.qr {
+      width: 180px;
+      margin-top: 10px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #FFD700;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .cart-total {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="logo">Ghost Cafe</div>
+    <nav>
+      <ul>
+        <li><a href="index (1).html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="total"></div>
+
+    <button class="checkout-btn" onclick="clearCart()" style="background:#444; color:#fff;">Clear All Cart</button>
+    <button class="checkout-btn" onclick="showPayment()">Checkout</button>
+
+    <div class="payment-method" id="payment-section">
+      <h2 style="color:#FFD700;">Payment Method</h2>
+      <label for="bank">Choose Bank:</label>
+      <select id="bank">
+        <option>Maybank</option>
+        <option>CIMB</option>
+        <option>Bank Islam</option>
+      </select>
+
+      <label for="card">Card Number:</label>
+      <input type="text" id="card" placeholder="Enter your bank card number" />
+
+      <label for="qr">Pay with QR Code:</label>
+      <img src="gallery/qr.jpeg" alt="QR Code" class="qr" />
+      <p style="color:#ccc; font-size:14px;">Scan with any mobile banking app</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Ghost Cafe. We’re hantu kopi. We’re Ghost.</p>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItems = document.getElementById("cart-items");
+    const total = document.getElementById("total");
+
+    function renderCart() {
+      cartItems.innerHTML = "";
+      let totalAmount = 0;
+
+      cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <div>
+            <h3>${item.name}</h3>
+            <p>Qty: ${item.quantity}</p>
+            <button onclick="decreaseQuantity(${index})">➖</button>
+            <button onclick="removeItem(${index})">❌</button>
+          </div>
+          <div>RM${(item.price * item.quantity).toFixed(2)}</div>
+        `;
+        cartItems.appendChild(div);
+        totalAmount += item.price * item.quantity;
+      });
+
+      total.innerText = "Total: RM" + totalAmount.toFixed(2);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function decreaseQuantity(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    function showPayment() {
+      document.getElementById("payment-section").style.display = "block";
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghost Cafe | Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('gallery/background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      border-bottom: 1px solid #FFD700;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFD700;
+      letter-spacing: 2px;
+    }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .hero img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #FFD700;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.5s forwards;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      color: #ccc;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: slideUp 1s ease 0.7s forwards;
+    }
+
+    /* Button */
+    .btn {
+      background-color: #FFD700;
+      color: #000;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #fff000;
+      box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #FFD700;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .hero {
+        height: auto;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <header>
+    <div class="logo">Ghost Cafe</div>
+    <nav>
+      <ul>
+        <li><a href="index (1).html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="gallery/logokedai.png" alt="Ghost Cafe Logo">
+    <h1>Sip & Puff</h1>
+    <p>“Some ghost haunt, some heal. I sip and let go.”</p>
+    <a href="collections.html" class="btn">Explore Now</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Ghost Cafe. We’re hantu kopi. We’re Ghost.</p>
+  </footer>
+</body>
+</html>
